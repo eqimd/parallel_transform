@@ -10,17 +10,13 @@ include_directories("src/transform")
 include_directories("src/range_scheduler")
 include_directories("src/vector_shared")
 
-set(
-        transform_src
+add_library(transform SHARED
         src/transform/transform.h
         src/transform/vector_shared.h
+        src/range_scheduler/range_scheduler.cpp
         src/range_scheduler/range_scheduler.h
 )
 
-add_executable(
-        ${PROJECT_NAME}
-        ${transform_src}
-        src/range_scheduler/range_scheduler.cpp
-        src/range_scheduler/range_scheduler.h
-        main.cpp
-)
+add_executable(main main.cpp)
+
+target_link_libraries(main PUBLIC transform)
