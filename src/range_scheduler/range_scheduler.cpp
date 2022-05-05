@@ -31,8 +31,9 @@ fwait(int32_t *futexp)
             break;
 
         s = futex(futexp, FUTEX_WAIT, 0, NULL, NULL, 0);
-        if (s == -1 && errno != EAGAIN)
-            errExit("futex-FUTEX_WAIT");
+        if (s == -1 && errno != EAGAIN) {
+            throw std::runtime_error("fwait failed; " + std::string(strerror(errno)));
+        }
     }
 }
 
@@ -44,8 +45,9 @@ fpost(int32_t *futexp)
     if (__sync_bool_compare_and_swap(futexp, 0, 1)) {
 
         s = futex(futexp, FUTEX_WAKE, 1, NULL, NULL, 0);
-        if (s  == -1)
-            errExit("futex-FUTEX_WAKE");
+        if (s  == -1) {
+            throw std::runtime_error("fwait failed; " + std::string(strerror(errno)));
+        }
     }
 }
 
