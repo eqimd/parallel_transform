@@ -13,7 +13,7 @@ int main() {
     auto end = std::chrono::steady_clock::now();
     auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 
-    if (diff < 7) {
+    if (diff < 7000) {
         return 0;
     }
 
