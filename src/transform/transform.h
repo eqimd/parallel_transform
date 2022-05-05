@@ -52,7 +52,7 @@ template <
     typename IR = std::invoke_result<F, RV>::type
 >
     requires (InputContiguousRange<R>, StatelessFunction<F, RV>, std::is_trivially_copyable_v<IR>)
-const vector_shared<IR> TransformWithProcesses(R&& range, F&& f, size_t nprocesses, size_t subrange_len) {
+std::vector<IR> TransformWithProcesses(R&& range, F&& f, size_t nprocesses, size_t subrange_len) {
     size_t range_size = range.size();
     range_scheduler rsched(range_size, subrange_len);
 
@@ -108,5 +108,5 @@ const vector_shared<IR> TransformWithProcesses(R&& range, F&& f, size_t nprocess
     int status = 0;
     while ((wpid = wait(&status)) > 0) {}
 
-    return vec;
+    return std::vector(vec.begin(), vec.end());
 }
