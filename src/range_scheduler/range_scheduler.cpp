@@ -114,9 +114,6 @@ range_scheduler::range_scheduler(size_t orig_sz, size_t subrange_len) {
     *_subrange_len = subrange_len;
     *_cur_pos = 0;
     *sched_futex = 1;   /* Make futex available */
-
-
-
 }
 
 range_scheduler::~range_scheduler() {
