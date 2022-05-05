@@ -22,6 +22,8 @@ add_executable(eq_dyn_1 tests/eq_dyn_1.cpp)
 add_executable(eq_dyn_2 tests/eq_dyn_2.cpp)
 add_executable(eq_dyn_3 tests/eq_dyn_3.cpp)
 add_executable(eq_static tests/eq_static.cpp)
+add_executable(proc_parallel_1 tests/proc_parallel_1.cpp)
+add_executable(proc_parallel_2 tests/proc_parallel_2.cpp)
 
 enable_testing()
 
@@ -40,4 +42,12 @@ add_test(
 add_test(
   NAME eq_static
   COMMAND $<TARGET_FILE:eq_static>
+)
+add_test(
+  NAME proc_parallel_1
+  COMMAND $<TARGET_FILE:proc_parallel_1>
+)
+add_test(
+  NAME proc_parallel_2
+  COMMAND $<TARGET_FILE:proc_parallel_2>
 )
