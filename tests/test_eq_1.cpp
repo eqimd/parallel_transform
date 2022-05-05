@@ -9,8 +9,8 @@ int main(int argc, char* argv[]) {
     std::vector<int> v_res(10, 2);
 
     auto v_trans = TransformWithProcesses(v, [](int x) {return x + 1;}, 5, 2);
-
-    if (v == v_res) {
+    
+    if (v_trans == v_res) {
         return 0;
     }
 

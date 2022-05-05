@@ -10,7 +10,7 @@ int main() {
 
     auto v_trans = TransformWithProcesses(v, [](int x) {return x + 1;}, 20, 6);
 
-    if (v == v_res) {
+    if (v_trans == v_res) {
         return 0;
     }
 
