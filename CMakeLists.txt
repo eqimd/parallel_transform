@@ -18,21 +18,26 @@ add_library(transform SHARED
 
 link_libraries(transform)
 
-add_executable(test_eq_1 tests/test_eq_1.cpp)
-add_executable(test_eq_2 tests/test_eq_2.cpp)
-add_executable(test_eq_3 tests/test_eq_3.cpp)
+add_executable(eq_dyn_1 tests/eq_dyn_1.cpp)
+add_executable(eq_dyn_2 tests/eq_dyn_2.cpp)
+add_executable(eq_dyn_3 tests/eq_dyn_3.cpp)
+add_executable(eq_static tests/eq_static.cpp)
 
 enable_testing()
 
 add_test(
-  NAME test_eq_1
-  COMMAND $<TARGET_FILE:test_eq_1>
+  NAME eq_dyn_1
+  COMMAND $<TARGET_FILE:eq_dyn_1>
 )
 add_test(
-  NAME test_eq_2
-  COMMAND $<TARGET_FILE:test_eq_2>
+  NAME eq_dyn_2
+  COMMAND $<TARGET_FILE:eq_dyn_2>
 )
 add_test(
-  NAME test_eq_3
-  COMMAND $<TARGET_FILE:test_eq_3>
+  NAME eq_dyn_3
+  COMMAND $<TARGET_FILE:eq_dyn_3>
+)
+add_test(
+  NAME eq_static
+  COMMAND $<TARGET_FILE:eq_static>
 )
