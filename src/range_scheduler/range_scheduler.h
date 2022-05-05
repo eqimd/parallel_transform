@@ -14,9 +14,14 @@ public:
     ~range_scheduler();
     std::pair<position, length> get_subrange();
 private:
-    size_t _orig_sz;
-    size_t _cur_pos;
-    size_t _subrange_len;
+    void* _orig_sz_ptr;
+    void* _cur_pos_ptr;
+    void* _subrange_len_ptr;
 
+    size_t* _orig_sz;
+    size_t* _cur_pos;
+    size_t* _subrange_len;
+
+    void* sched_futex_ptr;
     int32_t* sched_futex;
 };
